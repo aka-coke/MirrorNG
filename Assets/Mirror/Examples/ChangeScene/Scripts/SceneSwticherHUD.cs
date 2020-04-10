@@ -12,16 +12,6 @@ public class SceneSwticherHUD : MonoBehaviour
     {
         GUILayout.BeginArea(new Rect(10, 200, 215, 9999));
 
-        if (GUILayout.Button("Switch to Room1"))
-        {
-            networkManager.ServerChangeScene("Room1");
-        }
-
-        if (GUILayout.Button("Switch to Room2"))
-        {
-            networkManager.ServerChangeScene("Room2");
-        }
-
         if (GUILayout.Button("Add Room1 Scene"))
         {
             SceneManager.LoadSceneAsync("Room1", new LoadSceneParameters()
@@ -31,9 +21,23 @@ public class SceneSwticherHUD : MonoBehaviour
             });
         }
 
-        if (GUILayout.Button("Remove All Scenes"))
+        if (GUILayout.Button("Add Room2 Scene"))
         {
-            RemoveScenes();
+            SceneManager.LoadSceneAsync("Room2", new LoadSceneParameters()
+            {
+                loadSceneMode = LoadSceneMode.Additive,
+                localPhysicsMode = LocalPhysicsMode.Physics3D
+            });
+        }
+
+        if (GUILayout.Button("Move Players Room1"))
+        {
+            MovePlayers(SceneManager.GetSceneByName("Room1"));
+        }
+
+        if (GUILayout.Button("Move Players Room2"))
+        {
+            MovePlayers(SceneManager.GetSceneByName("Room2"));
         }
 
         GUILayout.Label("List of Active Scenes:" + "\n" + sceneText);
@@ -44,8 +48,6 @@ public class SceneSwticherHUD : MonoBehaviour
     public void FixedUpdate()
     {
         int countLoaded = SceneManager.sceneCount;
-        Scene[] loadedScenes = new Scene[countLoaded];
- 
         sceneText = string.Empty;
 
         for (int i = 0; i < countLoaded; i++)
@@ -54,8 +56,11 @@ public class SceneSwticherHUD : MonoBehaviour
         }
     }
 
-    private void RemoveScenes()
+    void MovePlayers(Scene scene)
     {
-        
+        foreach(NetworkConnection connection in networkManager.server.connections)
+        {
+            SceneManager.MoveGameObjectToScene(connection.Identity.gameObject, scene);
+        }
     }
 }
