@@ -603,7 +603,7 @@ namespace Mirror
             {
                 client.OnAuthenticated(client.Connection);
                 clientLoadedScene = true;
-                client.Connection = null;
+                //client.Connection = null;
             }
 
             if (client.IsConnected)

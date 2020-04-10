@@ -356,7 +356,7 @@ namespace Mirror
 
             Destroy(Connection.Identity.gameObject);
 
-            Connection.Identity = null;
+            //Connection.Identity = null;
 
             return true;
         }
