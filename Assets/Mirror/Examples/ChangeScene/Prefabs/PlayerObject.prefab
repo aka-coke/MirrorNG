@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7329392411044177583}
   - component: {fileID: 2920178539395675318}
   - component: {fileID: 3878225662718291898}
+  - component: {fileID: 2203187773359402814}
   m_Layer: 0
   m_Name: PlayerObject
   m_TagString: Untagged
@@ -115,3 +116,15 @@ MonoBehaviour:
   OnNetworkDestroy:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &2203187773359402814
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 486738946543244675}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b35f3ee693de86d47999c5e334965ff0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
